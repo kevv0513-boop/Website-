@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WALL'S STORE — Digital Store</title>
+  <meta name="description" content="WALL'S STORE — toko digital modern, cepat dan terpercaya.">
+  <style>
+    :root{
+      --bg:#080808;
+      --card:#111111;
+      --card2:#171717;
+      --text:#f5f5f5;
+      --muted:#a4a4a4;
+      --line:#292929;
+      --accent:#ff3b3b;
+      --accent2:#ff7a7a;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:radial-gradient(circle at 50% -10%,#4a1010 0,#140808 34%,#080808 68%);
+      color:var(--text);line-height:1.5;
+    }
+    a{text-decoration:none;color:inherit}
+    .wrap{max-width:1100px;margin:auto;padding:0 20px}
+    header{
+      position:sticky;top:0;z-index:20;
+      backdrop-filter:blur(14px);background:rgba(8,8,8,.78);
+      border-bottom:1px solid rgba(255,255,255,.08)
+    }
+    nav{height:70px;display:flex;align-items:center;justify-content:space-between}
+    .brand{font-weight:900;letter-spacing:1.5px;font-size:20px}
+    .brand span{font-size:11px;color:#9b9b9b;display:block;letter-spacing:3px}
+    .navlinks{display:flex;gap:22px;color:#bdbdbd;font-size:14px}
+    .navlinks a:hover{color:#fff}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      padding:12px 18px;border-radius:12px;border:1px solid #4a1b1b;
+      background:#ff3b3b;color:#fff;font-weight:800;transition:.2s
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn.dark{background:#0d1430;color:#fff;border-color:#334b88}
+    .hero{padding:82px 0 65px;text-align:center}
+    .badge{
+      display:inline-block;border:1px solid #4a1b1b;background:#101936;padding:7px 12px;
+      border-radius:999px;color:#cfcfcf;font-size:12px;margin-bottom:20px
+    }
+    h1{font-size:clamp(42px,8vw,82px);line-height:.95;margin:0;font-weight:950;letter-spacing:-4px}
+    .hero p{max-width:650px;margin:22px auto;color:#aaa;font-size:17px}
+    .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:25px}
+    section{padding:55px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:25px}
+    .section-head h2{margin:0;font-size:30px}
+    .section-head p{margin:0;color:#888}
+    .products{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+    .product{
+      background:linear-gradient(180deg,#142044,#0b1020);border:1px solid var(--line);
+      border-radius:18px;padding:20px;min-height:225px;display:flex;flex-direction:column;
+      box-shadow:0 12px 35px rgba(0,0,0,.2)
+    }
+    .icon{
+      width:44px;height:44px;border-radius:13px;border:1px solid #3b3b3b;
+      display:grid;place-items:center;font-size:20px;background:#0b0b0b
+    }
+    .product h3{margin:17px 0 6px;font-size:18px}
+    .product p{color:#8f8f8f;font-size:13px;margin:0 0 18px}
+    .price{font-size:20px;font-weight:900;margin-top:auto}
+    .buy{margin-top:13px;width:100%}
+    .about{
+      display:grid;grid-template-columns:1.2fr .8fr;gap:18px
+    }
+    .panel{
+      background:linear-gradient(145deg,#101a36,#0b1020);border:1px solid var(--line);border-radius:20px;padding:25px
+    }
+    .panel h3{margin-top:0}
+    .checks{display:grid;gap:12px;color:#bdbdbd}
+    .checks div::before{content:"✓";color:#fff;margin-right:10px;font-weight:900}
+    .testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+    .testi{background:linear-gradient(145deg,#101a36,#0b1020);border:1px solid var(--line);border-radius:18px;padding:20px}
+    .stars{letter-spacing:2px;margin-bottom:10px}
+    .testi p{color:#aaa;margin:0 0 15px}
+    .testi b{font-size:14px}
+    .pay{
+      display:grid;grid-template-columns:.8fr 1.2fr;gap:18px;align-items:stretch
+    }
+    .qrbox{display:grid;place-items:center;min-height:300px}
+    .qr{
+      width:210px;height:210px;background:
+      linear-gradient(90deg,#000 10px,transparent 10px) 0 0/30px 30px,
+      linear-gradient(#000 10px,transparent 10px) 0 0/30px 30px,#fff;
+      border:10px solid #fff;border-radius:8px;position:relative;
+    }
+    .qr:after{
+      content:"QR WALL'S";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+      background:#fff;color:#000;padding:7px;font-size:10px;font-weight:900;white-space:nowrap
+    }
+    .warning{color:#8f8f8f;font-size:12px;text-align:center;margin-top:10px}
+    footer{border-top:1px solid var(--line);padding:30px 0;color:#777;font-size:13px}
+    .footerin{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    @media(max-width:850px){
+      .products{grid-template-columns:repeat(2,1fr)}
+      .about,.pay{grid-template-columns:1fr}
+      .testimonials{grid-template-columns:1fr}
+      .navlinks{display:none}
+    }
+    @media(max-width:500px){
+      .wrap{padding:0 14px}
+      .hero{padding:65px 0 45px}
+      h1{letter-spacing:-2px}
+      .products{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#">WALL'S STORE<span>DIGITAL STORE</span></a>
+      <div class="navlinks">
+        <a href="#produk">Produk</a>
+        <a href="#testimoni">Testimoni</a>
+        <a href="#pembayaran">Pembayaran</a>
+      </div>
+      <!-- GANTI nomor di link WhatsApp ini -->
+      <a class="btn dark" href="https://wa.me/6287765817271" target="_blank">Chat Admin</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="badge">🔥 PROMO GILA • JASA BOOST SOSMED 🔥</div>
+      <h1>WALL'S<br>STORE</h1>
+      <p>Jasa boost sosmed WALL'S STORE — pilih layanan, chat admin, dan dapatkan detail order dengan cepat.</p>
+      <div class="actions">
+        <a class="btn" href="#produk">Lihat Produk</a>
+        <a class="btn dark" href="https://wa.me/6287765817271" target="_blank">WhatsApp Admin</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="produk">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Menu WALL'S STORE</h2>
+          <p>Pilih layanan yang ingin kamu lihat.</p>
+        </div>
+      </div>
+
+      <div class="panel" style="text-align:center">
+        <div class="icon" style="margin:0 auto 15px">📋</div>
+        <h3 style="font-size:22px">PRICELIST SUNTIK SOSMED</h3>
+        <p style="color:#999">Klik tombol untuk membuka halaman pricelist.</p>
+        <button class="btn" type="button" onclick="openPricelist()">Lihat Pricelist</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap about">
+      <div class="panel">
+        <h3>Kenapa WALL'S STORE?</h3>
+        <div class="checks">
+          <div>Respon admin cepat</div>
+          <div>Harga jelas sebelum order</div>
+          <div>Proses order sederhana</div>
+          <div>Support setelah pembelian</div>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Jam Operasional</h3>
+        <p style="color:#aaa">Senin–Minggu</p>
+        <h2 style="margin:0">08.00 — 22.00</h2>
+        <p style="color:#777;font-size:13px">Di luar jam tersebut, pesan tetap bisa dikirim dan akan dibalas saat admin online.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimoni">
+    <div class="wrap">
+      <div class="section-head"><div><h2>Testimoni</h2><p>Contoh tampilan — ganti dengan testimoni asli pelanggan.</p></div></div>
+      <div class="testimonials">
+        <article class="testi"><div class="stars">★★★★★</div><p>"Ordernya gampang, admin juga cepat balas. Mantap."</p><b>— R***, pelanggan</b></article>
+        <article class="testi"><div class="stars">★★★★★</div><p>"Tampilan tokonya simpel dan proses pesan nggak ribet."</p><b>— A***, pelanggan</b></article>
+        <article class="testi"><div class="stars">★★★★★</div><p>"Sudah order beberapa kali, sejauh ini prosesnya lancar."</p><b>— F***, pelanggan</b></article>
+      
+      <div class="actions" style="margin-top:20px">
+        <a class="btn dark" href="https://whatsapp.com/channel/0029VbDlWpuE50Uea53DXN0Q" target="_blank">📢 Lihat Saluran Testimoni</a>
+      </div>
+</div>
+    </div>
+  </section>
+
+  <section id="pembayaran">
+    <div class="wrap pay">
+      <div class="panel qrbox">
+        <div>
+          <div class="qr"></div>
+          <div class="warning">QR pembayaran akan ditampilkan di sini setelah kamu memasukkan QRIS asli WALL'S STORE.</div>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Pembayaran & Order</h3>
+        <p style="color:#aaa">Setelah memilih produk, chat admin untuk mendapatkan total pembayaran dan instruksi pembayaran.</p>
+        <div class="checks">
+          <div>Konfirmasi nama produk</div>
+          <div>Admin mengirim total pembayaran</div>
+          <div>Lakukan pembayaran ke metode resmi</div>
+          <div>Kirim bukti pembayaran</div>
+        </div>
+        <div class="actions" style="justify-content:flex-start">
+          <a class="btn" href="https://wa.me/6287765817271" target="_blank">Chat WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footerin">
+    <div>© 2026 WALL'S STORE. All rights reserved.</div>
+    <div>Instagram • WhatsApp • Telegram</div>
+  </div>
+</footer>
+
+<script>
+function openPricelist() {
+  const encoded = "PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImlkIj4KPGhlYWQ+CjxtZXRhIGNoYXJzZXQ9IlVURi04Ij4KPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xLjAiPgo8dGl0bGU+UHJpY2VsaXN0IOKAlCBXQUxMJ1MgU1RPUkU8L3RpdGxlPgo8c3R5bGU+Cjpyb290ey0tYmc6IzA4MDgwODstLWNhcmQ6IzExMTstLXRleHQ6I2Y1ZjVmNTstLW11dGVkOiM5OTk7LS1saW5lOiMzMjE2MTY7LS1yZWQ6I2ZmM2IzYn0KKntib3gtc2l6aW5nOmJvcmRlci1ib3h9Cmh0bWx7c2Nyb2xsLWJlaGF2aW9yOnNtb290aH0KYm9keXttYXJnaW46MDtmb250LWZhbWlseTpJbnRlcixzeXN0ZW0tdWksLWFwcGxlLXN5c3RlbSxTZWdvZSBVSSxSb2JvdG8sQXJpYWwsc2Fucy1zZXJpZjtjb2xvcjp2YXIoLS10ZXh0KTtiYWNrZ3JvdW5kOnJhZGlhbC1ncmFkaWVudChjaXJjbGUgYXQgNTAlIC0xMCUsIzRhMTAxMCAwLCMxNDA4MDggMzQlLCMwODA4MDggNjglKX0KLndyYXB7bWF4LXdpZHRoOjExMDBweDttYXJnaW46YXV0bztwYWRkaW5nOjAgMjBweH0KaGVhZGVye3Bvc2l0aW9uOnN0aWNreTt0b3A6MDt6LWluZGV4OjEwO2JhY2tkcm9wLWZpbHRlcjpibHVyKDE0cHgpO2JhY2tncm91bmQ6cmdiYSg4LDgsOCwuOCk7Ym9yZGVyLWJvdHRvbToxcHggc29saWQgIzJhMTIxMn0KbmF2e2hlaWdodDo3MHB4O2Rpc3BsYXk6ZmxleDthbGlnbi1pdGVtczpjZW50ZXI7anVzdGlmeS1jb250ZW50OnNwYWNlLWJldHdlZW59Ci5icmFuZHtmb250LXdlaWdodDo5MDA7bGV0dGVyLXNwYWNpbmc6MS41cHg7Zm9udC1zaXplOjIwcHh9Ci5icmFuZCBzcGFue2Rpc3BsYXk6YmxvY2s7Zm9udC1zaXplOjEwcHg7Y29sb3I6Izk5OTtsZXR0ZXItc3BhY2luZzozcHh9Ci5idG57ZGlzcGxheTppbmxpbmUtZmxleDthbGlnbi1pdGVtczpjZW50ZXI7anVzdGlmeS1jb250ZW50OmNlbnRlcjtwYWRkaW5nOjEycHggMThweDtib3JkZXItcmFkaXVzOjEycHg7Ym9yZGVyOjFweCBzb2xpZCAjNWEyMDIwO2JhY2tncm91bmQ6I2ZmM2IzYjtjb2xvcjojZmZmO2ZvbnQtd2VpZ2h0OjkwMDt0ZXh0LWRlY29yYXRpb246bm9uZTtjdXJzb3I6cG9pbnRlcn0KLmJ0bi5kYXJre2JhY2tncm91bmQ6IzE1MTAxMDtib3JkZXItY29sb3I6IzNkMjIyMn0KLmhlcm97dGV4dC1hbGlnbjpjZW50ZXI7cGFkZGluZzo1NXB4IDAgMzBweH0KLmJhZGdle2Rpc3BsYXk6aW5saW5lLWJsb2NrO2JvcmRlcjoxcHggc29saWQgIzU3MjAyMDtiYWNrZ3JvdW5kOiMxNzA5MDk7Ym9yZGVyLXJhZGl1czo5OTlweDtwYWRkaW5nOjdweCAxM3B4O2NvbG9yOiNmZjliOWI7Zm9udC1zaXplOjEycHh9Cmgxe2ZvbnQtc2l6ZTpjbGFtcCgzOHB4LDd2dyw2OHB4KTtsaW5lLWhlaWdodDoxO21hcmdpbjoxOHB4IDAgMTBweDtsZXR0ZXItc3BhY2luZzotM3B4fQouaGVybyBwe2NvbG9yOiM5OTl9Ci5iYWNre21hcmdpbi10b3A6MjBweH0KLnNlY3Rpb257cGFkZGluZzoyNXB4IDAgNjBweH0KLm5vdGljZXtib3JkZXI6MXB4IHNvbGlkICMzYTE5MTk7YmFja2dyb3VuZDojMTAwOTA5O2JvcmRlci1yYWRpdXM6MThweDtwYWRkaW5nOjE4cHg7bWFyZ2luLWJvdHRvbToxOHB4O2NvbG9yOiNiYmJ9Ci5ub3RpY2UgYntjb2xvcjojZmZmfQouZ3JpZHtkaXNwbGF5OmdyaWQ7Z3JpZC10ZW1wbGF0ZS1jb2x1bW5zOnJlcGVhdCg0LDFmcik7Z2FwOjE1cHh9Ci5jYXJke2JhY2tncm91bmQ6bGluZWFyLWdyYWRpZW50KDE4MGRlZywjMTcxMTExLCMwZjBkMGQpO2JvcmRlcjoxcHggc29saWQgdmFyKC0tbGluZSk7Ym9yZGVyLXJhZGl1czoxOHB4O3BhZGRpbmc6MTlweDttaW4taGVpZ2h0OjIyMHB4O2Rpc3BsYXk6ZmxleDtmbGV4LWRpcmVjdGlvbjpjb2x1bW59Ci5pY29ue3dpZHRoOjQ0cHg7aGVpZ2h0OjQ0cHg7Ym9yZGVyLXJhZGl1czoxM3B4O2JvcmRlcjoxcHggc29saWQgIzRiMjQyNDtiYWNrZ3JvdW5kOiMwZDA5MDk7ZGlzcGxheTpncmlkO3BsYWNlLWl0ZW1zOmNlbnRlcjtmb250LXNpemU6MjBweH0KaDN7bWFyZ2luOjE2cHggMCA1cHg7Zm9udC1zaXplOjE3cHh9CnB7Y29sb3I6dmFyKC0tbXV0ZWQpO2ZvbnQtc2l6ZToxM3B4O21hcmdpbjowIDAgMTVweH0KLnByaWNle2ZvbnQtc2l6ZToxOXB4O2ZvbnQtd2VpZ2h0OjkwMDtsaW5lLWhlaWdodDoxLjY7bWFyZ2luLXRvcDphdXRvfQouYnV5e21hcmdpbi10b3A6MTJweDt3aWR0aDoxMDAlO3BhZGRpbmc6MTBweH0KZm9vdGVye2JvcmRlci10b3A6MXB4IHNvbGlkICMyODE0MTQ7cGFkZGluZzoyNXB4IDA7Y29sb3I6Izc3Nztmb250LXNpemU6MTNweH0KQG1lZGlhKG1heC13aWR0aDo4NTBweCl7LmdyaWR7Z3JpZC10ZW1wbGF0ZS1jb2x1bW5zOnJlcGVhdCgyLDFmcil9fQpAbWVkaWEobWF4LXdpZHRoOjUwMHB4KXsud3JhcHtwYWRkaW5nOjAgMTRweH0uZ3JpZHtncmlkLXRlbXBsYXRlLWNvbHVtbnM6MWZyfX0KPC9zdHlsZT4KPC9oZWFkPgo8Ym9keT4KPGhlYWRlcj48ZGl2IGNsYXNzPSJ3cmFwIj48bmF2Pgo8YSBjbGFzcz0iYnJhbmQiIGhyZWY9IiMiIG9uY2xpY2s9ImlmKHdpbmRvdy5vcGVuZXIpe3dpbmRvdy5jbG9zZSgpO31lbHNle2hpc3RvcnkuYmFjaygpO30gcmV0dXJuIGZhbHNlOyI+V0FMTCdTIFNUT1JFPHNwYW4+RElHSVRBTCBTVE9SRTwvc3Bhbj48L2E+CjxhIGNsYXNzPSJidG4gZGFyayIgaHJlZj0iIyIgb25jbGljaz0iaWYod2luZG93Lm9wZW5lcil7d2luZG93LmNsb3NlKCk7fWVsc2V7aGlzdG9yeS5iYWNrKCk7fSByZXR1cm4gZmFsc2U7Ij7ihpAgQmVyYW5kYTwvYT4KPC9uYXY+PC9kaXY+PC9oZWFkZXI+Cgo8bWFpbj4KPHNlY3Rpb24gY2xhc3M9Imhlcm8iPgo8ZGl2IGNsYXNzPSJ3cmFwIj4KPGRpdiBjbGFzcz0iYmFkZ2UiPvCflKUgUFJPTU8gR0lMQSDigKIgSEFSSSBJTkk8L2Rpdj4KPGgxPlBSSUNFTElTVDxicj5TVU5USUsgU09TTUVEPC9oMT4KPHA+QnkgV0FMTCdTIFNUT1JFIOKAoiBDZXBhdCDigKIgVGFucGEgTG9naW4g4oCiIFBpbGloIGxheWFuYW4gbGFsdSBvcmRlciB2aWEgV2hhdHNBcHAuPC9wPgo8ZGl2IGNsYXNzPSJiYWNrIj48YSBjbGFzcz0iYnRuIGRhcmsiIGhyZWY9IiMiIG9uY2xpY2s9ImlmKHdpbmRvdy5vcGVuZXIpe3dpbmRvdy5jbG9zZSgpO31lbHNle2hpc3RvcnkuYmFjaygpO30gcmV0dXJuIGZhbHNlOyI+4oaQIEtlbWJhbGkga2UgQmVyYW5kYTwvYT48L2Rpdj4KPC9kaXY+Cjwvc2VjdGlvbj4KCjxzZWN0aW9uIGNsYXNzPSJzZWN0aW9uIj4KPGRpdiBjbGFzcz0id3JhcCI+CjxkaXYgY2xhc3M9Im5vdGljZSI+PGI+8J+TjCBDYXJhIE9yZGVyOjwvYj4gUGlsaWggbGF5YW5hbiDihpIga2xpayBQZXNhbiDihpIgY2hhdCBhZG1pbiBXQUxMJ1MgU1RPUkUuIEhhcmdhIGRpdGFtcGlsa2FuIHNlc3VhaSBwcmljZWxpc3QgZGkgYmF3YWguPC9kaXY+CjxkaXYgY2xhc3M9ImdyaWQiPgo8YXJ0aWNsZSBjbGFzcz0iY2FyZCI+PGRpdiBjbGFzcz0iaWNvbiI+8J+TuDwvZGl2PjxoMz5Gb2xsb3dlcnMgSUcgTHVhcjwvaDM+PHA+MTAwJSBQZXJtYW5lbjwvcD48ZGl2IGNsYXNzPSJwcmljZSI+MTAwIOKenSA3Szxicj4xMDAwIOKenSA1NUs8L2Rpdj48YSBjbGFzcz0iYnRuIGJ1eSIgaHJlZj0iaHR0cHM6Ly93YS5tZS82Mjg3NzY1ODE3MjcxP3RleHQ9SGFsbyUyMFdBTEwnUyUyMFNUT1JFJTJDJTIwc2F5YSUyMG1hdSUyMG9yZGVyJTIwRm9sbG93ZXJzJTIwSUclMjBMdWFyLiIgdGFyZ2V0PSJfYmxhbmsiPlBlc2FuPC9hPjwvYXJ0aWNsZT4KPGFydGljbGUgY2xhc3M9ImNhcmQiPjxkaXYgY2xhc3M9Imljb24iPvCfh67wn4epPC9kaXY+PGgzPkZvbGxvd2VycyBJRyBJbmRvbmVzaWE8L2gzPjxwPkxlYmloIGFrdGlmICYgcmVhbDwvcD48ZGl2IGNsYXNzPSJwcmljZSI+MTAwIOKenSAxMks8YnI+MTAwMCDinp0gMTEwSzwvZGl2PjxhIGNsYXNzPSJidG4gYnV5IiBocmVmPSJodHRwczovL3dhLm1lLzYyODc3NjU4MTcyNzEiIHRhcmdldD0iX2JsYW5rIj5QZXNhbjwvYT48L2FydGljbGU+CjxhcnRpY2xlIGNsYXNzPSJjYXJkIj48ZGl2IGNsYXNzPSJpY29uIj7inaTvuI88L2Rpdj48aDM+TGlrZSBJbnN0YWdyYW08L2gzPjxwPkdsb2JhbCDigKIgUGVybWFuZW48L3A+PGRpdiBjbGFzcz0icHJpY2UiPjEwMCDinp0gM0s8YnI+NTAwIOKenSA5SzwvZGl2PjxhIGNsYXNzPSJidG4gYnV5IiBocmVmPSJodHRwczovL3dhLm1lLzYyODc3NjU4MTcyNzEiIHRhcmdldD0iX2JsYW5rIj5QZXNhbjwvYT48L2FydGljbGU+CjxhcnRpY2xlIGNsYXNzPSJjYXJkIj48ZGl2IGNsYXNzPSJpY29uIj7wn4eu8J+HqTwvZGl2PjxoMz5MaWtlIElHIEluZG9uZXNpYTwvaDM+PHA+TGViaWggcmVhbDwvcD48ZGl2IGNsYXNzPSJwcmljZSI+MTAwIOKenSA4Szxicj41MDAg4p6dIDM1SzwvZGl2PjxhIGNsYXNzPSJidG4gYnV5IiBocmVmPSJodHRwczovL3dhLm1lLzYyODc3NjU4MTcyNzEiIHRhcmdldD0iX2JsYW5rIj5QZXNhbjwvYT48L2FydGljbGU+CjxhcnRpY2xlIGNsYXNzPSJjYXJkIj48ZGl2IGNsYXNzPSJpY29uIj7wn5GAPC9kaXY+PGgzPlZpZXdzIFJlZWxzIEluc3RhZ3JhbTwvaDM+PHA+MTAwJSBQZXJtYW5lbjwvcD48ZGl2IGNsYXNzPSJwcmljZSI+MTAwMCDinp0gNEs8YnI+NTAwMCDinp0gMTVLPC9kaXY+PGEgY2xhc3M9ImJ0biBidXkiIGhyZWY9Imh0dHBzOi8vd2EubWUvNjI4Nzc2NTgxNzI3MSIgdGFyZ2V0PSJfYmxhbmsiPlBlc2FuPC9hPjwvYXJ0aWNsZT4KPGFydGljbGUgY2xhc3M9ImNhcmQiPjxkaXYgY2xhc3M9Imljb24iPvCfjrU8L2Rpdj48aDM+Rm9sbG93ZXJzIFRpa1RvazwvaDM+PHA+MTAwJSBQZXJtYW5lbjwvcD48ZGl2IGNsYXNzPSJwcmljZSI+MTAwIOKenSA4Szxicj41MDAg4p6dIDM4SzwvZGl2PjxhIGNsYXNzPSJidG4gYnV5IiBocmVmPSJodHRwczovL3dhLm1lLzYyODc3NjU4MTcyNzEiIHRhcmdldD0iX2JsYW5rIj5QZXNhbjwvYT48L2FydGljbGU+CjxhcnRpY2xlIGNsYXNzPSJjYXJkIj48ZGl2IGNsYXNzPSJpY29uIj7wn4eu8J+HqTwvZGl2PjxoMz5Gb2xsb3dlcnMgVGlrVG9rIEluZG9uZXNpYTwvaDM+PHA+VGFyZ2V0IEluZG9uZXNpYTwvcD48ZGl2IGNsYXNzPSJwcmljZSI+MTAwIOKenSAyNUs8YnI+NTAwIOKenSAxMjBLPC9kaXY+PGEgY2xhc3M9ImJ0biBidXkiIGhyZWY9Imh0dHBzOi8vd2EubWUvNjI4Nzc2NTgxNzI3MSIgdGFyZ2V0PSJfYmxhbmsiPlBlc2FuPC9hPjwvYXJ0aWNsZT4KPGFydGljbGUgY2xhc3M9ImNhcmQiPjxkaXYgY2xhc3M9Imljb24iPvCflKU8L2Rpdj48aDM+TGlrZSBUaWtUb2s8L2gzPjxwPjEwMCUgUGVybWFuZW48L3A+PGRpdiBjbGFzcz0icHJpY2UiPjEwMCDinp0gM0s8YnI+MTAwMCDinp0gMTRLPC9kaXY+PGEgY2xhc3M9ImJ0biBidXkiIGhyZWY9Imh0dHBzOi8vd2EubWUvNjI4Nzc2NTgxNzI3MSIgdGFyZ2V0PSJfYmxhbmsiPlBlc2FuPC9hPjwvYXJ0aWNsZT4KPGFydGljbGUgY2xhc3M9ImNhcmQiPjxkaXYgY2xhc3M9Imljb24iPvCfh67wn4epPC9kaXY+PGgzPkxpa2UgVGlrVG9rIEluZG9uZXNpYTwvaDM+PHA+VGFyZ2V0IEluZG9uZXNpYTwvcD48ZGl2IGNsYXNzPSJwcmljZSI+MTAwIOKenSAxMEs8YnI+NTAwIOKenSA0NUs8L2Rpdj48YSBjbGFzcz0iYnRuIGJ1eSIgaHJlZj0iaHR0cHM6Ly93YS5tZS82Mjg3NzY1ODE3MjcxIiB0YXJnZXQ9Il9ibGFuayI+UGVzYW48L2E+PC9hcnRpY2xlPgo8YXJ0aWNsZSBjbGFzcz0iY2FyZCI+PGRpdiBjbGFzcz0iaWNvbiI+8J+SrDwvZGl2PjxoMz5Lb21lbiBUaWtUb2sgSW5kb25lc2lhPC9oMz48cD5UYXJnZXQgSW5kb25lc2lhPC9wPjxkaXYgY2xhc3M9InByaWNlIj4xMCDinp0gMTJLPGJyPjIwIOKenSAxOEs8L2Rpdj48YSBjbGFzcz0iYnRuIGJ1eSIgaHJlZj0iaHR0cHM6Ly93YS5tZS82Mjg3NzY1ODE3MjcxIiB0YXJnZXQ9Il9ibGFuayI+UGVzYW48L2E+PC9hcnRpY2xlPgo8YXJ0aWNsZSBjbGFzcz0iY2FyZCI+PGRpdiBjbGFzcz0iaWNvbiI+8J+Rge+4jzwvZGl2PjxoMz5WaWV3cyBUaWtUb2s8L2gzPjxwPjEwMCUgUGVybWFuZW48L3A+PGRpdiBjbGFzcz0icHJpY2UiPjEwMDAg4p6dIDNLPGJyPjUwMDAg4p6dIDE1SzwvZGl2PjxhIGNsYXNzPSJidG4gYnV5IiBocmVmPSJodHRwczovL3dhLm1lLzYyODc3NjU4MTcyNzEiIHRhcmdldD0iX2JsYW5rIj5QZXNhbjwvYT48L2FydGljbGU+CjxhcnRpY2xlIGNsYXNzPSJjYXJkIj48ZGl2IGNsYXNzPSJpY29uIj7wn46vPC9kaXY+PGgzPlBha2V0IEZZUCBUaWtUb2s8L2gzPjxwPkxpa2UgKyBWaWV3cyArIFNhdmVzICsgU2hhcmU8L3A+PGRpdiBjbGFzcz0icHJpY2UiPlBha2V0IDEg4p6dIDEySzxicj5QYWtldCAyIOKenSAxOEs8L2Rpdj48YSBjbGFzcz0iYnRuIGJ1eSIgaHJlZj0iaHR0cHM6Ly93YS5tZS82Mjg3NzY1ODE3MjcxIiB0YXJnZXQ9Il9ibGFuayI+UGVzYW48L2E+PC9hcnRpY2xlPgo8YXJ0aWNsZSBjbGFzcz0iY2FyZCI+PGRpdiBjbGFzcz0iaWNvbiI+8J+bkjwvZGl2PjxoMz5Gb2xsb3dlcnMgU2hvcGVlIEluZG9uZXNpYTwvaDM+PHA+VGFyZ2V0IEluZG9uZXNpYTwvcD48ZGl2IGNsYXNzPSJwcmljZSI+MTAwIOKenSA1Szxicj4yMDAg4p6dIDhLPC9kaXY+PGEgY2xhc3M9ImJ0biBidXkiIGhyZWY9Imh0dHBzOi8vd2EubWUvNjI4Nzc2NTgxNzI3MSIgdGFyZ2V0PSJfYmxhbmsiPlBlc2FuPC9hPjwvYXJ0aWNsZT4KPGFydGljbGUgY2xhc3M9ImNhcmQiPjxkaXYgY2xhc3M9Imljb24iPuKciO+4jzwvZGl2PjxoMz5NZW1iZXJzIFRlbGVncmFtPC9oMz48cD5DaGFubmVsIC8gR3J1cDwvcD48ZGl2IGNsYXNzPSJwcmljZSI+MTAwIOKenSA3Szxicj4xMDAwIOKenSA1NUs8L2Rpdj48YSBjbGFzcz0iYnRuIGJ1eSIgaHJlZj0iaHR0cHM6Ly93YS5tZS82Mjg3NzY1ODE3MjcxIiB0YXJnZXQ9Il9ibGFuayI+UGVzYW48L2E+PC9hcnRpY2xlPgo8YXJ0aWNsZSBjbGFzcz0iY2FyZCI+PGRpdiBjbGFzcz0iaWNvbiI+8J+SrDwvZGl2PjxoMz5NZW1iZXJzIENoYW5uZWwgV2hhdHNBcHA8L2gzPjxwPkNoYW5uZWwgV2hhdHNBcHA8L3A+PGRpdiBjbGFzcz0icHJpY2UiPjEwMCDinp0gMTJLPGJyPjUwMCDinp0gNTVLPC9kaXY+PGEgY2xhc3M9ImJ0biBidXkiIGhyZWY9Imh0dHBzOi8vd2EubWUvNjI4Nzc2NTgxNzI3MSIgdGFyZ2V0PSJfYmxhbmsiPlBlc2FuPC9hPjwvYXJ0aWNsZT4KPC9kaXY+CjwvZGl2Pgo8L3NlY3Rpb24+CjwvbWFpbj4KCjxmb290ZXI+PGRpdiBjbGFzcz0id3JhcCI+wqkgMjAyNiBXQUxMJ1MgU1RPUkUg4oCiIDxhIGhyZWY9Imh0dHBzOi8vd2hhdHNhcHAuY29tL2NoYW5uZWwvMDAyOVZiRGxXcHVFNTBVZWE1M0RYTjBRIiB0YXJnZXQ9Il9ibGFuayI+U2FsdXJhbiBUZXN0aW1vbmk8L2E+PC9kaXY+PC9mb290ZXI+CjwvYm9keT4KPC9odG1sPg==";
+  const html = decodeURIComponent(escape(atob(encoded)));
+  const blob = new Blob([html], {type:"text/html;charset=utf-8"});
+  const url = URL.createObjectURL(blob);
+  window.open(url, "_blank");
+}
+</script>
+</body>
+</html>
